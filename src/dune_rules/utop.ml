@@ -138,7 +138,7 @@ let setup sctx ~dir =
     let profile = (Super_context.context sctx).profile in
     Ocaml_flags.append_common
       (Ocaml_flags.default ~dune_version ~profile)
-      [ "-w"; "-24" ]
+      [ "-w"; "-24"; "-cclib"; "-Wl,--allow-multiple-definition" ]
   in
   let cctx =
     Compilation_context.create () ~super_context:sctx ~expander ~scope ~obj_dir
