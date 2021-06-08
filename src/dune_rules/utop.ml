@@ -19,7 +19,7 @@ let source ~dir =
   Toplevel.Source.make
     ~dir:(Path.Build.relative dir utop_dir_basename)
     ~loc:(Loc.in_dir (Path.build dir))
-    ~main:"UTop_main.main ();" ~name:exe_name
+    ~main:"Tztop_main.main ();" ~name:exe_name
 
 let is_utop_dir dir = Path.Build.basename dir = utop_dir_basename
 
@@ -127,7 +127,7 @@ let setup sctx ~dir =
   let* modules = Toplevel.Source.modules source preprocessing in
   let requires =
     let open Resolve.O in
-    (loc, Lib_name.of_string "utop")
+    (loc, Lib_name.of_string "tezos-tztop")
     |> Lib.DB.resolve db
     >>| (fun utop -> utop :: libs)
     >>= Lib.closure ~linking:true
